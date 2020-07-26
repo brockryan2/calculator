@@ -1,11 +1,11 @@
 #main
 
-#from calculator import Calculator
+from calculator import Calculator
 from tkinter import *
 
 CANVAS_WIDTH  = 400
 CANVAS_HEIGHT = 500
-CANVAS_COLOR  = "light gray"
+CANVAS_COLOR  = "dark gray"
 
 DISPLAY_WIDTH = 0.96
 DISPLAY_HEIGHT= 0.15
@@ -19,21 +19,21 @@ BUTTONfRAME_HEIGHT = 0.84
 BUTTONfRAME_X      = 0.50
 BUTTONfRAME_Y      = 0.20
 BUTTONfRAME_ANCHOR = 'n'
-BUTTONfRAME_COLOR  = "light gray"
+BUTTONfRAME_COLOR  = "dark gray"
 
 SINGLEBUTTON_WIDTH = 50
 SINGLEBUTTON_HEIGHT= 40
 SINGLEBUTTON_X     = 0.00
 SINGLEBUTTON_Y     = 0.00
 SINGLEBUTTON_ANCHOR= 'nw'
-SINGLEBUTTON_COLOR = "blue"
+SINGLEBUTTON_COLOR = "light gray"
 
 DOUBLEBUTTON_WIDTH = 105
 DOUBLEBUTTON_HEIGHT= 40
 DOUBLEBUTTON_X     = 0.00
 DOUBLEBUTTON_Y     = 0.00
 DOUBLEBUTTON_ANCHOR= 'nw'
-DOUBLEBUTTON_COLOR = "blue"
+DOUBLEBUTTON_COLOR = "light gray"
 
 BUTTON_FONT = 40
 BUTTON_GAP  = 5
@@ -41,6 +41,7 @@ BUTTON_GAP  = 5
 BUTTON_LABELS =["MC", "MR", "MS", "M+", "M-", "AC", " C ", "+/-", "^2", "^y", " 7 ", " 8 ", " 9 ", " / ", "sqrt", " 4 ", " 5 ", " 6 ", " x ", "1/x", " 1 ", " 2 ", " 3 ", " - ", "=", "0", " . ", "+"]
 
 def main():
+    calc = Calculator()
     root = Tk()
     root.grid_rowconfigure(1, weight=1)
 
@@ -59,7 +60,11 @@ def main():
     buttons = {}
 
     for button_text in BUTTON_LABELS:
+        if(button_text.isdigit() and button_text != "0"):
+            current_button = Button(button_frame, text=button_text, bg=SINGLEBUTTON_COLOR, font=BUTTON_FONT, command=calc.enter_number(int(button_text)))
+
         current_button = Button(button_frame, text=button_text, bg=SINGLEBUTTON_COLOR, font=BUTTON_FONT)
+
         if(button_text == "0"):
             buttons[current_button] = "0"
 
@@ -74,6 +79,7 @@ def main():
     for button in buttons:
         if(buttons[button] == "0"):
             button.grid(column=column_count, row=row_count, columnspan=2, ipadx=45, ipady=5, padx=1.5, pady=1.5)
+            #button.command(calc.enter_number(0))
             column_count += 1
 
         elif(buttons[button] == "="):

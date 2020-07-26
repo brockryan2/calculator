@@ -2,6 +2,11 @@
 from math import sqrt
 
 class Calculator:
+    """Calculator class doc string
+
+    note: current version uses standard Python float type. Future version will include support for
+    'bigfloat' in order to allow for more precise arithmetic with foating point decimals.
+    """
 
     def __init__(self):
         self.display = 0
