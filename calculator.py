@@ -12,19 +12,19 @@ class Calculator:
         return self.display
 
     def add(self, number):
-        return display + number
+        return self.display + number
 
     def subtract(self, number):
-        return display - number
+        return self.display - number
 
     def multiply(self, number):
-        return display * number
+        return self.display * number
 
     def divide(self, number):
-        return display / number
+        return self.display / number
 
     def square(self, number):
-        return display ** number
+        return number * number
 
     def square_root(self, number):
         return math.sqrt(number)
