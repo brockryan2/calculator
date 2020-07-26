@@ -3,7 +3,7 @@
 #from calculator import Calculator
 from tkinter import *
 
-CANVAS_WIDTH  = 350
+CANVAS_WIDTH  = 400
 CANVAS_HEIGHT = 500
 CANVAS_COLOR  = "light gray"
 
@@ -73,17 +73,20 @@ def main():
 
     for button in buttons:
         if(buttons[button] == "0"):
-            button.grid(column=column_count, row=row_count, columnspan=2, ipadx=45, ipady=5, padx=1.5, pady=3)
+            button.grid(column=column_count, row=row_count, columnspan=2, ipadx=45, ipady=5, padx=1.5, pady=1.5)
             column_count += 1
 
         elif(buttons[button] == "="):
-            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=14, ipady=28, padx=1.5, pady=3)
+            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=14, ipady=28, padx=1.5, pady=1.5)
 
         elif(buttons[button] == "sqrt"):
-            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=0, ipady=-4, padx=1.5, pady=3)
+            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=0, ipady=-4, padx=1.5, pady=1.5)
+
+        #elif(buttons[button] == "AC"):
+         #   button.grid(column=column_count, row=row_count, rowspan=2, ipadx=100, ipady=-4, padx=1.5, pady=3)
 
         else:
-            button.grid(column=column_count, row=row_count, ipadx=10, ipady=4, padx=1.5, pady=3)
+            button.grid(column=column_count, row=row_count, ipadx=2, ipady=2, padx=1.5, pady=1.5)
 
         column_count += 1
 
