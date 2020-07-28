@@ -34,7 +34,7 @@ class Calculator:
         """
         return hasattr(number, "__abs__")
 
-    @number_1.setter
+    @number1.setter
     def number1(self, update):
         if(self.isNumber(update)):
             self._number1 = update
@@ -43,7 +43,7 @@ class Calculator:
     def number2(self):
         return self._number2
 
-    @number_2.setter
+    @number2.setter
     def number2(self, update):
         if(self.isNumber(update)):
             self._number2 = update

@@ -1,5 +1,4 @@
 #main
-
 from calculator import Calculator
 from tkinter import *
 
@@ -38,7 +37,7 @@ DOUBLEBUTTON_COLOR = "light gray"
 BUTTON_FONT = 40
 BUTTON_GAP  = 5
 
-BUTTON_LABELS =["MC", "MR", "MS", "M+", "M-", "AC", " C ", "+/-", "^2", "^y", " 7 ", " 8 ", " 9 ", " / ", "sqrt", " 4 ", " 5 ", " 6 ", " x ", "1/x", " 1 ", " 2 ", " 3 ", " - ", "=", "0", " . ", "+"]
+BUTTON_LABELS =["MC", "MR", "MS", "M+", "M-", "AC", " C ", "+/-", "^2", "^y", " 7 ", " 8 ", " 9 ", " / ", "sqrt", " 4 ", " 5 ", " 6 ", " x ", "1/x", " 1 ", " 2 ", " 3 ", " - ", "=", "0", ".", "+"]
 
 def main():
     calc = Calculator()
@@ -60,36 +59,70 @@ def main():
     buttons = {}
 
     for button_text in BUTTON_LABELS:
-        if(button_text.isdigit() and button_text != "0"):
-            current_button = Button(button_frame, text=button_text, bg=SINGLEBUTTON_COLOR, font=BUTTON_FONT, command=calc.enter_number(int(button_text)))
 
         current_button = Button(button_frame, text=button_text, bg=SINGLEBUTTON_COLOR, font=BUTTON_FONT)
-
-        if(button_text == "0"):
-            buttons[current_button] = "0"
-
-        elif(button_text == "="):
-            buttons[current_button] = "="
-
-        else:
-            buttons[current_button] = None
+        buttons[current_button] = button_text
 
     row_count, column_count = 1, 1
 
     for button in buttons:
         if(buttons[button] == "0"):
-            button.grid(column=column_count, row=row_count, columnspan=2, ipadx=45, ipady=5, padx=1.5, pady=1.5)
-            #button.command(calc.enter_number(0))
+            button.grid(column=1, row=6, columnspan=2, ipadx=45, ipady=5, padx=15, pady=1.5)
             column_count += 1
 
-        elif(buttons[button] == "="):
-            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=14, ipady=28, padx=1.5, pady=1.5)
+        if(buttons[button] == "MR"):
+            button.grid(column=column_count, row=row_count, ipadx=3, ipady=2, padx=1.5, pady=1.5)
 
-        elif(buttons[button] == "sqrt"):
-            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=0, ipady=-4, padx=1.5, pady=1.5)
+        if(buttons[button] == "MS"):
+            button.grid(column=column_count, row=row_count, ipadx=2.5, ipady=2, padx=1.5, pady=1.5)
 
-        #elif(buttons[button] == "AC"):
-         #   button.grid(column=column_count, row=row_count, rowspan=2, ipadx=100, ipady=-4, padx=1.5, pady=3)
+        if(buttons[button] == "M+"):
+            button.grid(column=column_count, row=row_count, ipadx=4.5, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "M-"):
+            button.grid(column=column_count, row=row_count, ipadx=7, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "AC"):
+            button.grid(column=column_count, row=row_count, ipadx=4, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "C"):
+            button.grid(column=column_count, row=row_count, ipadx=4.5, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "+/-"):
+            button.grid(column=column_count, row=row_count, ipadx=5.5, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "^2"):
+            button.grid(column=column_count, row=row_count, ipadx=8, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "^y"):
+            button.grid(column=column_count, row=row_count, ipadx=8, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "sqrt"):
+            button.grid(column=column_count, row=row_count, ipadx=0, ipady=0, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "/"):
+            button.grid(column=column_count, row=row_count, ipadx=10, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "x"):
+            button.grid(column=column_count, row=row_count, ipadx=8, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "-"):
+            button.grid(column=column_count, row=row_count, ipadx=10, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "+"):
+            button.grid(column=column_count, row=row_count, ipadx=11, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "1/x"):
+            button.grid(column=column_count, row=row_count, ipadx=4, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "."):
+            button.grid(column=column_count, row=row_count, ipadx=14, ipady=2, padx=1.5, pady=1.5)
+
+        if(buttons[button] == "="):
+            button.grid(column=column_count, row=row_count, rowspan=2, ipadx=10, ipady=20, padx=1.5, pady=1.5)
+
+        elif(buttons[button] is not None):
+            button.grid(column=column_count, row=row_count, ipadx=6, ipady=2, padx=1.5, pady=1.5)
 
         else:
             button.grid(column=column_count, row=row_count, ipadx=2, ipady=2, padx=1.5, pady=1.5)
