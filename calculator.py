@@ -10,11 +10,11 @@ class Calculator:
     """
 
     def __init__(self):
-        self._display  = 0
-        self._number_1 = 0
-        self._number_2 = 0
-        self._operator = ""
-        self._memory   = 0
+        self._display  = None
+        self._number1  = None
+        self._number2  = None
+        self._operator = None
+        self._memory   = None
 
     @property
     def display(self):
@@ -25,30 +25,28 @@ class Calculator:
         self._display = update
 
     @property
-    def number_1(self):
-        return self._number_1
+    def number1(self):
+        return self._number1
+
+    def isNumber(self, number):
+        """way of checking that the number to be updated is actually a
+        numerical type, but without type checking (which is a no-no in Python)
+        """
+        return hasattr(number, "__abs__")
 
     @number_1.setter
-    def number_1(self, update):
-
-        if(hasattr(update, "__abs__")):
-        """way of checking that the number to be updated is actually a
-        numerical type, but without type checking (which is a no-no in Python)
-        """
-        self._number_1 = update
+    def number1(self, update):
+        if(self.isNumber(update)):
+            self._number1 = update
 
     @property
-    def number_2(self):
-        return self._number_2
+    def number2(self):
+        return self._number2
 
     @number_2.setter
-    def number_2(self, update):
-
-        if(hasattr(update, "__abs__")):
-        """way of checking that the number to be updated is actually a
-        numerical type, but without type checking (which is a no-no in Python)
-        """
-        self._number_2 = update
+    def number2(self, update):
+        if(self.isNumber(update)):
+            self._number2 = update
 
     @property
     def operator(self):
@@ -91,9 +89,59 @@ class Calculator:
     def power(self, base, exponent):
         return math.pow(base, exponent)
 
-    def inverse(self, number):
+    def multiplicative_inverse(self, number):
         return 1 / number
 
+    def negative(self, number):
+        return number * -1
+
+    def clear(self):
+        self._number2  = None
+        self._operator = None
+        self._display  = None
+
+    def all_clear(self):
+        self._display  = None
+        self._number1  = None
+        self._number2  = None
+        self._operator = None
+
+    def memory_store(self, number):
+        self._display = self._memory
+
+    def memory_recall(self, memory):
+        return self._memory
+
+    def memory_clear(self):
+        self._memory = None
+
+    def memory_plus(self):
+        pass
+
+    def memory_minus(self):
+        pass
+
+    def number_button(self, number):
+        self._display = number
+
+        if(self._number1 == None and self._number2 == None):
+            self._number1 = number
+
+        elif(self._number1 != None and self._number2 == None):
+            self._number2 = number
+
+        elif(self._number1 == None and self._number2 != None):
+            self._number1 = number
+
+        else:
+            self.all_clear()
+            self._number1 = number
+
+    def decimal_button(self):
+        pass
+
+    def operator_button(self, operator):
+        self._operator = operator
+
     def evaluate(self):
-
-
+        pass
