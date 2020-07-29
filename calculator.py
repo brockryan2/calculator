@@ -39,6 +39,10 @@ class Calculator:
         if(self.isNumber(update)):
             self._number1 = update
 
+        else:
+            raise ValueError("Invalid argument, only use numeric data types or\
+                              str containing only numbers")
+
     @property
     def number2(self):
         return self._number2
@@ -47,6 +51,10 @@ class Calculator:
     def number2(self, update):
         if(self.isNumber(update)):
             self._number2 = update
+
+        else:
+            raise ValueError("Invalid argument, only use numeric data types or\
+                              str containing only numbers")
 
     @property
     def operator(self):
